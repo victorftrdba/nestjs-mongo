@@ -26,7 +26,7 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    const result = await this.userModel.updateOne({ _id: id }, updateUserDto);
+    const result = await this.userModel.findByIdAndUpdate({ _id: id }, { $set: updateUserDto }, { new: true });
     return result;
   }
 
